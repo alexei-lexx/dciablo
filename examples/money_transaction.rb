@@ -1,9 +1,8 @@
 class MoneyTransaction < Dciablo::Context
 
-  def initialize(user_a, user_b, amount)
+  def initialize(user_a, user_b)
     set_actor :source, user_a
     set_actor :target, user_b
-    @amount = amount
   end
   
   role :source do
@@ -18,8 +17,8 @@ class MoneyTransaction < Dciablo::Context
     end
   end
 
-  def work
-    source.subtract(@amount)
-    target.add(@amount)
+  def transfer(amount)
+    source.subtract(amount)
+    target.add(amount)
   end
 end

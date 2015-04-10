@@ -6,7 +6,7 @@ RSpec.describe MoneyTransaction do
   context 'when two accounts are given' do
     let(:john) { OpenStruct.new(balance: 10) }
     let(:david) { OpenStruct.new(balance: 20) }
-    let(:context) { MoneyTransaction.new(john, david, 5) }
+    let(:context) { MoneyTransaction.new(john, david) }
 
     describe '#source' do
       let(:source_role) { context.source }
@@ -32,15 +32,15 @@ RSpec.describe MoneyTransaction do
       end
     end
 
-    describe '#work' do
-      it 'transfers money from source to target' do
-        context.work
+    describe '#transfer' do
+      it 'transfers $5 from source to target' do
+        context.transfer(5)
         expect(john.balance).to eq 5
         expect(david.balance).to eq 25
       end
 
       it 'doesnt change accounts definition' do
-        context.work
+        context.transfer(5)
         expect(john.respond_to?(:subtract)).to be false
         expect(david.respond_to?(:add)).to be false
       end

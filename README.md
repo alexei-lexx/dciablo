@@ -53,7 +53,7 @@ definitions of extra methods.
         end
       end
 
-      def work
+      def transfer
         source.subtract(@amount)
         target.add(@amount)
       end
@@ -67,7 +67,7 @@ Here is the example of usage.
     john = OpenStruct.new(balance: 10)
     david = OpenStruct.new(balance: 20)
     context = MoneyTransaction.new(john, david, 5)
-    context.work
+    context.transfer
 
     p john.balance    # 5
     p david.balance   # 25
