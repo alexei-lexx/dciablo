@@ -1,7 +1,7 @@
 # Dciablo
 
 DCI (Data, context and interaction) is a pattern used to program a
-communication of objects.
+collaboration of objects.
 It separates the data from use case (which is called a context) and Roles that objects play (interaction).
 An excellent explanation you can find in the article
 http://www.sitepoint.com/dci-the-evolution-of-the-object-oriented-paradigm/
