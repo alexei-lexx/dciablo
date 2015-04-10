@@ -1,8 +1,8 @@
 class MoneyTransaction < Dciablo::Context
 
-  def initialize(source_account, target_account, amount)
-    set_actor :source, source_account
-    set_actor :target, target_account
+  def initialize(user_a, user_b, amount)
+    set_actor :source, user_a
+    set_actor :target, user_b
     @amount = amount
   end
   

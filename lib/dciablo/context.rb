@@ -11,6 +11,8 @@ class Dciablo::Context
     end
   end
 
+  private
+
   def set_actor(role, actor)
     made_up_actor = SimpleDelegator.new(actor)
     proc = self.class.roles[role.to_sym]
