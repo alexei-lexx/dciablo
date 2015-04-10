@@ -34,43 +34,55 @@ The roles are defined by class macros `role`, which is followed by a block with
 definitions of extra methods.
 
 
-    class MoneyTransaction < Dciablo::Context
-      def initialize(user_a, user_b, amount)
-        set_actor :source, user_a
-        set_actor :target, user_b
-        @amount = amount
-      end
-      
-      role :source do
-        def subtract(amount)
-          self.balance -= amount
-        end
-      end
-
-      role :target do
-        def add(amount)
-          self.balance += amount
-        end
-      end
-
-      def transfer
-        source.subtract(@amount)
-        target.add(@amount)
-      end
+```ruby
+class MoneyTransaction < Dciablo::Context
+  def initialize(user_a, user_b)
+    set_actor :source, user_a
+    set_actor :target, user_b
+  end
+  
+  role :source do
+    def transfer_out(amount)
+      self.balance -= amount
+      context.target.transfer_in(amount)
     end
+  end
 
-As you can see our context takes 3 arguments: two users and an amount. The private method `set_actor` is used to assign a role to each user.
+  role :target do
+    def transfer_in(amount)
+      self.balance += amount
+    end
+  end
+
+  def transfer(amount)
+    source.transfer_out(amount)
+  end
+end
+```
+
+
+As you can see our context constructor takes 2 arguments: two users, who play
+the roles. The private method `set_actor` is used to assign a role to each user.
+
+One significant thing here. The role `source` accesses the role `target`
+through `context`.
+
+```ruby
+context.target.transfer_in(amount)
+```
 
 Here is the example of usage.
 
-    require 'ostruct'
-    john = OpenStruct.new(balance: 10)
-    david = OpenStruct.new(balance: 20)
-    context = MoneyTransaction.new(john, david, 5)
-    context.transfer
+```ruby
+john = OpenStruct.new(balance: 10)
+david = OpenStruct.new(balance: 20)
 
-    p john.balance    # 5
-    p david.balance   # 25
+context = MoneyTransaction.new(john, david)
+context.transfer(5)
+
+p john.balance    # 5
+p david.balance   # 25
+```
 
 ## Contributing
 

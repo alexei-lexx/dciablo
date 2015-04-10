@@ -15,8 +15,8 @@ RSpec.describe MoneyTransaction do
         expect(source_role.balance).to eq 10
       end
 
-      it 'responds to :subtract' do
-        expect(source_role.respond_to?(:subtract)).to be true
+      it 'responds to :transfer_out' do
+        expect(source_role.respond_to?(:transfer_out)).to be true
       end
     end
 
@@ -28,7 +28,7 @@ RSpec.describe MoneyTransaction do
       end
 
       it 'responds to :add' do
-        expect(target_role.respond_to?(:add)).to be true
+        expect(target_role.respond_to?(:transfer_in)).to be true
       end
     end
 
@@ -41,8 +41,8 @@ RSpec.describe MoneyTransaction do
 
       it 'doesnt change accounts definition' do
         context.transfer(5)
-        expect(john.respond_to?(:subtract)).to be false
-        expect(david.respond_to?(:add)).to be false
+        expect(john.respond_to?(:transfer_out)).to be false
+        expect(david.respond_to?(:transfer_in)).to be false
       end
     end
   end
