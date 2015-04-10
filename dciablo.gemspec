@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["alexei.lexx@gmail.com"]
   spec.summary       = %q{Implementation of DCI patter in Ruby}
   spec.description   = %q{Implementation of DCI patter in Ruby}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/alexei-lexx/dciablo"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
