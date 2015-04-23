@@ -1,4 +1,4 @@
-class MoneyTransaction < Dciablo::Context
+class MoneyTransfer < Dciablo::Context
   def initialize(user_a, user_b)
     set_actor :source, user_a
     set_actor :target, user_b
