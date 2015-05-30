@@ -1,5 +1,7 @@
 # Dciablo
 
+[![Build Status](https://travis-ci.org/alexei-lexx/dciablo.svg?branch=master)](https://travis-ci.org/alexei-lexx/dciablo)
+
 DCI (Data, context and interaction) is a pattern used to program a
 collaboration of objects.
 It separates the data from use case (which is called a context) and Roles that objects play (interaction).
