@@ -1,8 +1,6 @@
-require 'ostruct'
-require File.expand_path(File.dirname(__FILE__) + '/../lib/dciablo')
-require File.expand_path(File.dirname(__FILE__) + '/../examples/money_transfer')
+require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-RSpec.describe MoneyTransfer do
+describe MoneyTransfer do
   context 'when two accounts are given' do
     let(:john) { OpenStruct.new(balance: 10) }
     let(:david) { OpenStruct.new(balance: 20) }
