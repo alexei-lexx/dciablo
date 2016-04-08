@@ -1,5 +1,11 @@
 module Dciablo
   class Context
+    def initialize(actors = {})
+      actors.each do |role, actor|
+        set_actor role, actor
+      end
+    end
+
     class << self
       attr_accessor :roles
 

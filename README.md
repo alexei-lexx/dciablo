@@ -38,11 +38,6 @@ definitions of extra methods.
 
 ```ruby
 class MoneyTransfer < Dciablo::Context
-  def initialize(user_a, user_b)
-    set_actor :source, user_a
-    set_actor :target, user_b
-  end
-  
   role :source do
     def transfer_out(amount)
       self.balance -= amount
@@ -79,7 +74,7 @@ Here is the example of usage.
 john = OpenStruct.new(balance: 10)
 david = OpenStruct.new(balance: 20)
 
-context = MoneyTransfer.new(john, david)
+context = MoneyTransfer.new(source: john, target: david)
 context.transfer(5)
 
 p john.balance    # 5

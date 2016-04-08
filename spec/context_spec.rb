@@ -10,17 +10,13 @@ describe Dciablo::Context do
   describe '.role' do
     before do
       class MyContext
-        def initialize(object)
-          set_actor :santa, object
-        end
-
         role :santa do
           def give_gift; end
         end
       end
     end
 
-    let(:context) { MyContext.new(object) }
+    let(:context) { MyContext.new(santa: object) }
 
     it 'creates the same-name getter' do
       expect(context).to respond_to :santa

@@ -4,7 +4,7 @@ describe MoneyTransfer do
   context 'when two accounts are given' do
     let(:john) { OpenStruct.new(balance: 10) }
     let(:david) { OpenStruct.new(balance: 20) }
-    let(:context) { MoneyTransfer.new(john, david) }
+    let(:context) { MoneyTransfer.new(source: john, target: david) }
 
     describe '#source' do
       let(:source_role) { context.source }
