@@ -3,5 +3,4 @@ require 'dciablo/role'
 require 'dciablo/context'
 
 module Dciablo
-
 end

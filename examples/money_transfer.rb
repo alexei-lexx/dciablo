@@ -3,7 +3,7 @@ class MoneyTransfer < Dciablo::Context
     set_actor :source, user_a
     set_actor :target, user_b
   end
-  
+
   role :source do
     def transfer_out(amount)
       self.balance -= amount

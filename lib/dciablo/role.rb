@@ -1,10 +1,12 @@
 require 'delegate'
 
-class Dciablo::Role < SimpleDelegator
-  attr_reader :context
+module Dciablo
+  class Role < SimpleDelegator
+    attr_reader :context
 
-  def initialize(actor, context)
-    super(actor)
-    @context = context
+    def initialize(actor, context)
+      super(actor)
+      @context = context
+    end
   end
 end
